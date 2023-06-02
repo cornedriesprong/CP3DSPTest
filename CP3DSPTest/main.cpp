@@ -7,6 +7,7 @@
 
 #include "portaudio.h"
 #include <CoreFoundation/CoreFoundation.h>
+#include <CP3_DSP_Objc.h>
 
 #define NUM_SECONDS (60)
 #define SAMPLE_RATE (48000.0)
@@ -39,7 +40,9 @@ private:
 
 typedef struct
 {
+    KarplusVoice *karplusVoices[VOICE_COUNT];
     SinOscillator *sineVoices[VOICE_COUNT];
+    double damping;
 }
 paTestData;
 
@@ -64,8 +67,10 @@ static int patestCallback(const void *inputBuffer, void *outputBuffer,
         float mix = 0;
 
         for(int j = 0; j < VOICE_COUNT; j++) {
+            KarplusVoice *karplusVoice = data->karplusVoices[j];
+            mix += karplusVoice->process(data->damping) * 0.75;
             SinOscillator *sineVoice = data->sineVoices[j];
-            mix += sineVoice->process() / 4;
+            mix += sineVoice->process() * 0.25;
         }
         *out++ = (float)mix / VOICE_COUNT;
         *out++ = (float)mix / VOICE_COUNT;
@@ -85,10 +90,13 @@ int main(void)
     
     for (int i = 0; i < VOICE_COUNT; i++) {
         double frequency = freqs[i] / 2;
+        data.karplusVoices[i] = new KarplusVoice();
+        data.karplusVoices[i]->pluck(frequency, SAMPLE_RATE);
         
         data.sineVoices[i] = new SinOscillator(SAMPLE_RATE);
         data.sineVoices[i]->setFrequency(frequency);
     }
+    data.damping = 0.25;
     
     err = Pa_Initialize();
     if (err != paNoError)

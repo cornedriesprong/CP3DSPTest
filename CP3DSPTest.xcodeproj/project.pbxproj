@@ -13,6 +13,7 @@
 		97E4D8792A29EB3800CBF950 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8762A29EB3800CBF950 /* AudioToolbox.framework */; };
 		97E4D87A2A29EB3800CBF950 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8772A29EB3800CBF950 /* CoreAudio.framework */; };
 		97E4D87C2A29EB4A00CBF950 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D87B2A29EB4A00CBF950 /* Carbon.framework */; };
+		97E4D87F2A29ECAB00CBF950 /* CP3_DSP in Frameworks */ = {isa = PBXBuildFile; productRef = 97E4D87E2A29ECAB00CBF950 /* CP3_DSP */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,7 @@
 				97E4D8722A29EAB800CBF950 /* libportaudio.a in Frameworks */,
 				97E4D8782A29EB3800CBF950 /* AudioUnit.framework in Frameworks */,
 				97E4D87A2A29EB3800CBF950 /* CoreAudio.framework in Frameworks */,
+				97E4D87F2A29ECAB00CBF950 /* CP3_DSP in Frameworks */,
 				97E4D87C2A29EB4A00CBF950 /* Carbon.framework in Frameworks */,
 				97E4D8792A29EB3800CBF950 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -110,6 +112,9 @@
 			dependencies = (
 			);
 			name = CP3DSPTest;
+			packageProductDependencies = (
+				97E4D87E2A29ECAB00CBF950 /* CP3_DSP */,
+			);
 			productName = CP3DSPTest;
 			productReference = 97E4D8662A29E9E000CBF950 /* CP3DSPTest */;
 			productType = "com.apple.product-type.tool";
@@ -137,6 +142,9 @@
 				Base,
 			);
 			mainGroup = 97E4D85D2A29E9E000CBF950;
+			packageReferences = (
+				97E4D87D2A29ECAB00CBF950 /* XCRemoteSwiftPackageReference "CP3_DSP" */,
+			);
 			productRefGroup = 97E4D8672A29E9E000CBF950 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -317,6 +325,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		97E4D87D2A29ECAB00CBF950 /* XCRemoteSwiftPackageReference "CP3_DSP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cornedriesprong/CP3_DSP";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		97E4D87E2A29ECAB00CBF950 /* CP3_DSP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97E4D87D2A29ECAB00CBF950 /* XCRemoteSwiftPackageReference "CP3_DSP" */;
+			productName = CP3_DSP;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 97E4D85E2A29E9E000CBF950 /* Project object */;
 }

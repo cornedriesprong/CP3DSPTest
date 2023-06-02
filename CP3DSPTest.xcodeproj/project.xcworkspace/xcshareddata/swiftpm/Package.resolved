@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "cp3_dsp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cornedriesprong/CP3_DSP",
+      "state" : {
+        "branch" : "main",
+        "revision" : "742e0c24cfe8b4cf6be925881f4cbd3f386d2f8d"
+      }
+    }
+  ],
+  "version" : 2
+}
