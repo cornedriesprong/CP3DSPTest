@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		97E4D86A2A29E9E000CBF950 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97E4D8692A29E9E000CBF950 /* main.cpp */; };
+		97E4D8722A29EAB800CBF950 /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8702A29EAB800CBF950 /* libportaudio.a */; };
+		97E4D8782A29EB3800CBF950 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8752A29EB3800CBF950 /* AudioUnit.framework */; };
+		97E4D8792A29EB3800CBF950 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8762A29EB3800CBF950 /* AudioToolbox.framework */; };
+		97E4D87A2A29EB3800CBF950 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8772A29EB3800CBF950 /* CoreAudio.framework */; };
+		97E4D87C2A29EB4A00CBF950 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D87B2A29EB4A00CBF950 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +30,13 @@
 /* Begin PBXFileReference section */
 		97E4D8662A29E9E000CBF950 /* CP3DSPTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CP3DSPTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E4D8692A29E9E000CBF950 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		97E4D8702A29EAB800CBF950 /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libportaudio.a; sourceTree = "<group>"; };
+		97E4D8712A29EAB800CBF950 /* portaudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = portaudio.h; sourceTree = "<group>"; };
+		97E4D8732A29EB0A00CBF950 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = modules; sourceTree = "<group>"; };
+		97E4D8752A29EB3800CBF950 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		97E4D8762A29EB3800CBF950 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		97E4D8772A29EB3800CBF950 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		97E4D87B2A29EB4A00CBF950 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +44,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97E4D8722A29EAB800CBF950 /* libportaudio.a in Frameworks */,
+				97E4D8782A29EB3800CBF950 /* AudioUnit.framework in Frameworks */,
+				97E4D87A2A29EB3800CBF950 /* CoreAudio.framework in Frameworks */,
+				97E4D87C2A29EB4A00CBF950 /* Carbon.framework in Frameworks */,
+				97E4D8792A29EB3800CBF950 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +60,7 @@
 			children = (
 				97E4D8682A29E9E000CBF950 /* CP3DSPTest */,
 				97E4D8672A29E9E000CBF950 /* Products */,
+				97E4D8742A29EB3800CBF950 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +75,23 @@
 		97E4D8682A29E9E000CBF950 /* CP3DSPTest */ = {
 			isa = PBXGroup;
 			children = (
+				97E4D8732A29EB0A00CBF950 /* modules */,
+				97E4D8702A29EAB800CBF950 /* libportaudio.a */,
+				97E4D8712A29EAB800CBF950 /* portaudio.h */,
 				97E4D8692A29E9E000CBF950 /* main.cpp */,
 			);
 			path = CP3DSPTest;
+			sourceTree = "<group>";
+		};
+		97E4D8742A29EB3800CBF950 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97E4D87B2A29EB4A00CBF950 /* Carbon.framework */,
+				97E4D8762A29EB3800CBF950 /* AudioToolbox.framework */,
+				97E4D8752A29EB3800CBF950 /* AudioUnit.framework */,
+				97E4D8772A29EB3800CBF950 /* CoreAudio.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +273,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GWBH83EBX;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CP3DSPTest",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -251,6 +287,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5GWBH83EBX;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CP3DSPTest",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
