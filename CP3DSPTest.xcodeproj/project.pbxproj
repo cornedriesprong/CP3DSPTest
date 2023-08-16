@@ -13,7 +13,7 @@
 		97E4D8792A29EB3800CBF950 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8762A29EB3800CBF950 /* AudioToolbox.framework */; };
 		97E4D87A2A29EB3800CBF950 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D8772A29EB3800CBF950 /* CoreAudio.framework */; };
 		97E4D87C2A29EB4A00CBF950 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E4D87B2A29EB4A00CBF950 /* Carbon.framework */; };
-		97E4D87F2A29ECAB00CBF950 /* CP3_DSP in Frameworks */ = {isa = PBXBuildFile; productRef = 97E4D87E2A29ECAB00CBF950 /* CP3_DSP */; };
+		97E4D8822A2A3A8100CBF950 /* KarplusVoice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97E4D8812A2A3A8100CBF950 /* KarplusVoice.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +38,8 @@
 		97E4D8762A29EB3800CBF950 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		97E4D8772A29EB3800CBF950 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		97E4D87B2A29EB4A00CBF950 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		97E4D8802A2A3A8100CBF950 /* KarplusVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KarplusVoice.h; sourceTree = "<group>"; };
+		97E4D8812A2A3A8100CBF950 /* KarplusVoice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KarplusVoice.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +50,6 @@
 				97E4D8722A29EAB800CBF950 /* libportaudio.a in Frameworks */,
 				97E4D8782A29EB3800CBF950 /* AudioUnit.framework in Frameworks */,
 				97E4D87A2A29EB3800CBF950 /* CoreAudio.framework in Frameworks */,
-				97E4D87F2A29ECAB00CBF950 /* CP3_DSP in Frameworks */,
 				97E4D87C2A29EB4A00CBF950 /* Carbon.framework in Frameworks */,
 				97E4D8792A29EB3800CBF950 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -78,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				97E4D8732A29EB0A00CBF950 /* modules */,
+				97E4D8812A2A3A8100CBF950 /* KarplusVoice.cpp */,
+				97E4D8802A2A3A8100CBF950 /* KarplusVoice.h */,
 				97E4D8702A29EAB800CBF950 /* libportaudio.a */,
 				97E4D8712A29EAB800CBF950 /* portaudio.h */,
 				97E4D8692A29E9E000CBF950 /* main.cpp */,
@@ -113,7 +116,6 @@
 			);
 			name = CP3DSPTest;
 			packageProductDependencies = (
-				97E4D87E2A29ECAB00CBF950 /* CP3_DSP */,
 			);
 			productName = CP3DSPTest;
 			productReference = 97E4D8662A29E9E000CBF950 /* CP3DSPTest */;
@@ -160,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97E4D86A2A29E9E000CBF950 /* main.cpp in Sources */,
+				97E4D8822A2A3A8100CBF950 /* KarplusVoice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,14 +339,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		97E4D87E2A29ECAB00CBF950 /* CP3_DSP */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 97E4D87D2A29ECAB00CBF950 /* XCRemoteSwiftPackageReference "CP3_DSP" */;
-			productName = CP3_DSP;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 97E4D85E2A29E9E000CBF950 /* Project object */;
 }

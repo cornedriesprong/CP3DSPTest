@@ -6,43 +6,17 @@
 //
 
 #include "portaudio.h"
+#include "KarplusVoice.h"
 #include <CoreFoundation/CoreFoundation.h>
-#include <CP3_DSP_Objc.h>
 
 #define NUM_SECONDS (60)
-#define SAMPLE_RATE (48000.0)
+#define SAMPLE_RATE (44100.0)
 #define FRAMES_PER_BUFFER (256)
 #define VOICE_COUNT (4)
-
-class SinOscillator {
-public:
-    SinOscillator(double sampleRate) {
-        mSampleRate = sampleRate;
-    }
-
-    void setFrequency(double frequency) {
-        mDeltaOmega = frequency / mSampleRate;
-    }
-
-    double process() {
-        const double sample = sin(mOmega * M_PI * 2);
-        mOmega += mDeltaOmega;
-
-        if (mOmega >= 1.0) { mOmega -= 1.0; }
-        return sample;
-    }
-
-private:
-    double mOmega = 0.0;
-    double mDeltaOmega = 0.0;
-    double mSampleRate = 0.0;
-};
 
 typedef struct
 {
     KarplusVoice *karplusVoices[VOICE_COUNT];
-    SinOscillator *sineVoices[VOICE_COUNT];
-    double damping;
 }
 paTestData;
 
@@ -68,9 +42,7 @@ static int patestCallback(const void *inputBuffer, void *outputBuffer,
 
         for(int j = 0; j < VOICE_COUNT; j++) {
             KarplusVoice *karplusVoice = data->karplusVoices[j];
-            mix += karplusVoice->process(data->damping) * 0.75;
-            SinOscillator *sineVoice = data->sineVoices[j];
-            mix += sineVoice->process() * 0.25;
+            mix += karplusVoice->process();
         }
         *out++ = (float)mix / VOICE_COUNT;
         *out++ = (float)mix / VOICE_COUNT;
@@ -89,14 +61,18 @@ int main(void)
     double freqs[4] = {261.63, 329.63, 392.00, 493.88};
     
     for (int i = 0; i < VOICE_COUNT; i++) {
-        double frequency = freqs[i] / 2;
         data.karplusVoices[i] = new KarplusVoice();
-        data.karplusVoices[i]->pluck(frequency, SAMPLE_RATE);
         
-        data.sineVoices[i] = new SinOscillator(SAMPLE_RATE);
-        data.sineVoices[i]->setFrequency(frequency);
+        double frequency = freqs[i] / 2;
+        double damping = 0.0;
+        double tone = 0.0;
+        double excitation = 0.2;
+        data.karplusVoices[i]->pluck(frequency,
+                                     SAMPLE_RATE,
+                                     pow(damping, 2),
+                                     tone,
+                                     excitation);
     }
-    data.damping = 0.25;
     
     err = Pa_Initialize();
     if (err != paNoError)
